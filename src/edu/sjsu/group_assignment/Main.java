@@ -1,5 +1,5 @@
 /*
-    Author  : Yipeng Liu, [Add your name], [Add your name]
+    Author  : Yipeng Liu, Lilou Sicard-Noel, [Add your name]
     Project : Group Assignment
     Class   : Main
     Date    : 07/15/2021
