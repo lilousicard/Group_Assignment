@@ -44,9 +44,12 @@ public class AppointmentManager {
 
     /**
      * Print all appointment in the treemap in there natural order or an error message if the treemap is empty
-     *
+     * This use a comparator to sort the printed item. The sortage can be by Start Date or Description.
+     * Remember that an appointment's description is unique.
+     * Right now, compare to return the comparison of the description
+     * @param compare The comparator object
      */
-    public void printAppointment()
+    public void printAppointment(Comparator<Appointment> compare)
     {
         if(apptMap.isEmpty())
         {
@@ -54,9 +57,12 @@ public class AppointmentManager {
         }
         else
         {
-            for(Map.Entry<String,Appointment> entry: apptMap.entrySet())
+            List <Appointment> toPrint = new ArrayList<>();
+            toPrint.addAll(apptMap.values());
+            toPrint.sort(compare);
+            for(Appointment entry: toPrint)
             {
-               System.out.println(entry.getValue().toString());
+               System.out.println(entry.toString());
             }
         }
     }
