@@ -9,7 +9,7 @@ package edu.sjsu.group_assignment;
 import java.time.LocalDate;
 
 public class Main {
-
+/*
     public static void main(String[] args) {
         LocalDate startDate = LocalDate.parse("2021-06-01");
         LocalDate endDate = LocalDate.parse("2021-08-05");
@@ -32,4 +32,6 @@ public class Main {
 	    AppMan.printAppointment(compare);
 
     }
+
+ */
 }
