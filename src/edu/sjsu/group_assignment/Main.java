@@ -1,8 +1,9 @@
 /*
-    Author  : Yipeng Liu, Lilou Sicard-Noel, [Add your name]
+    Author  : Yipeng Liu, Lilou Sicard-Noel, Zhuying Wang
     Project : Group Assignment
     Class   : Main
     Date    : 07/15/2021
+    Updated : 07/30/2021
  */
 package edu.sjsu.group_assignment;
 
@@ -34,4 +35,14 @@ public class Main {
     }
 
  */
+/*  // Test for compatibility by Yipeng Liu
+    public static void main1(String[] args) {
+        AppointmentProgram.runProgram();
+    }
+
+ */
+
+    public static void main(String[] args) {
+
+    }
 }
