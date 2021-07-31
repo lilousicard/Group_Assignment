@@ -2,6 +2,11 @@ package edu.sjsu.group_assignment;
 
 import java.time.LocalDate;
 
+/**
+ * A subclass of Appointment.
+ *
+ * @author Lilou Sicard-Noel
+ */
 public class OnetimeAppointment extends Appointment{
 
      public OnetimeAppointment(String description, LocalDate startDate) {

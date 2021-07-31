@@ -2,6 +2,11 @@ package edu.sjsu.group_assignment;
 
 import java.util.Comparator;
 
+/**
+ * An Appointment Comparator that compares start dates only.
+ *
+ * @author Lilou Sicard-Noel
+ */
 public class AppComparator implements Comparator<Appointment> {
 
     /** This method will compare the appointment by Start Date instead of

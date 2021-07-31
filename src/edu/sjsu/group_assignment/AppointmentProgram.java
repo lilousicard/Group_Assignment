@@ -21,30 +21,16 @@ import java.util.Scanner;
  */
 public class AppointmentProgram {
     /**
-     * A helper method that capitalizes the first letter
-     * of the {@code String} and force the rest to the lower
-     * case.
-     *
-     * @param inputStr
-     *      A raw {@code String}.
-     *
-     * @return
-     *      A  capitalzied {@code String}.
-     */
-    public static String capitalize(String inputStr) {
-        return inputStr.substring(0,1).toUpperCase()
-                + inputStr.substring(1).toLowerCase();
-    }
-
-    /**
      * Runs the program.
      */
     public static void runProgram() {
         AppointmentManager manager = new AppointmentManager();
         String prompt = """
-                (a) for adding an appointment;
+                (a) for adding an appointment through console inputs;
+                (r) for adding appointments by reading an input file;
                 (d) for deleting an appointment;
                 (v) for viewing all appointments;
+                (s) for saving appointments to file;
                 (q) for quitting the program
                 Please choose an option:\s""";
         System.out.print(prompt);
@@ -65,7 +51,7 @@ public class AppointmentProgram {
                     }
                     // Get description
                     System.out.print("Please enter a description: ");
-                    String description = scanner.nextLine().trim();
+                    String description = AppointmentManager.capitalize(scanner.nextLine().trim());
                     // Get dates
                     LocalDate startDate;
                     LocalDate endDate = null;
@@ -113,17 +99,25 @@ public class AppointmentProgram {
                     }
                     System.out.print(prompt);
                 }
+                case "r" -> {
+                    System.out.print("Please enter the full path to the input file: ");
+                    String inputFile = scanner.nextLine().trim();
+                    if (manager.readFromFile(inputFile)) {
+                        System.out.println("Appointments added!");
+                    }
+                    System.out.print(prompt);
+                }
                 case "d" -> {
                     System.out.print("Please enter the description of the appointment you want to delete: ");
-                    String typeLookUp = capitalize(scanner.nextLine().trim());
+                    String desLookUp = AppointmentManager.capitalize(scanner.nextLine().trim());
                     boolean isDeleted = true;
-                    while (!manager.deleteAppointment(typeLookUp)) {
+                    while (!manager.deleteAppointment(desLookUp)) {
                         System.out.println("Sorry, appointment not found! please enter again!");
                         System.out.print("Please enter the description of the " +
                                 "appointment you want to delete, or q (or Q) to return " +
                                 "to the main menu: ");
-                        typeLookUp = capitalize(scanner.nextLine().trim());
-                        if (typeLookUp.equals("Q")) {
+                        desLookUp = AppointmentManager.capitalize(scanner.nextLine().trim());
+                        if (desLookUp.equals("Q")) {
                             isDeleted = false;
                             break;
                         }
@@ -134,10 +128,20 @@ public class AppointmentProgram {
                     System.out.print(prompt);
                 }
                 case "v" -> {
-                    if (!manager.apptMap.isEmpty()) {
+                    if (!manager.isEmpty()) {
                         manager.printAppointment(null);
                     } else {
                         System.out.println("No any appointment now.");
+                    }
+                    System.out.print(prompt);
+                }
+                case "s" -> {
+                    if (manager.isEmpty()) {
+                        System.out.println("No any appointment now; no file has been generated.");
+                    } else if (manager.saveToFile("appointments.txt")) {
+                        System.out.println("Appointments saved to file!");
+                    } else {
+                        System.out.println("Appointments are NOT saved to file!");
                     }
                     System.out.print(prompt);
                 }

@@ -35,14 +35,14 @@ public class Main {
     }
 
  */
-/*  // Test for compatibility by Yipeng Liu
-    public static void main1(String[] args) {
+  // Test for compatibility by Yipeng Liu
+    public static void main(String[] args) {
         AppointmentProgram.runProgram();
     }
 
- */
 
-    public static void main(String[] args) {
+
+    public static void main2(String[] args) {
 
     }
 }
