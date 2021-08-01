@@ -2,6 +2,17 @@ package edu.sjsu.group_assignment;
 
 import java.time.LocalDate;
 
+/**
+ * An appointment has a String description, two LocalDate objects
+ * for the starting and ending date, and a {@code String} type.
+ * Its constructors initialize those variables by the arguments
+ * passed in. The order of the parameters is:
+ * {@code String} description, {@code LocalDate} startDate,
+ * {@code LocalDate} endDat, {@code String} type.
+ *
+ *
+ * @author Lilou Sicard-Noel
+ */
 public abstract class Appointment implements Comparable<Appointment> {
 
     private String description;
@@ -65,11 +76,7 @@ public abstract class Appointment implements Comparable<Appointment> {
         {
             return true;
         }
-        if (this.startDate.isEqual(date)|| this.endDate.isEqual(date))
-        {
-            return true;
-        }
-        return false;
+       return this.startDate.isEqual(date) || this.endDate.isEqual(date);
    }
 
     /**+
